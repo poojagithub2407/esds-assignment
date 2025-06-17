@@ -109,7 +109,7 @@ const Analytics = () => {
       </div>
 
       {/* Line Chart */}
-      <div className="w-full h-[300px] sm:h-[400px]">
+      <div className="w-full h-[100px] sm:h-[200px]">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={analyticsData}>
             {/* No CartesianGrid for clean background */}

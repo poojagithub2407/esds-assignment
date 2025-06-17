@@ -31,6 +31,13 @@
       "email": "pd@gmail.com",
       "password": "Pooja123",
       "role": "Admin"
+    },
+    {
+      "id": "9057",
+      "name": "Pooja",
+      "email": "w@gmail.com",
+      "password": "Pooja@123",
+      "role": "Editor"
     }
   ],
   "card": [
