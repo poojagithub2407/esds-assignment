@@ -1,39 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const AddUserForm = ({ setUsers, searchQuery, setSearchQuery }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    role: '',
+    name: "",
+    email: "",
+    password: "",
+    role: "",
   });
 
   const [errors, setErrors] = useState({});
-  const [success, setSuccess] = useState('');
+  const [success, setSuccess] = useState("");
 
   const validate = () => {
     const newErrors = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = "Name is required";
     } else if (!/^[A-Za-z ]+$/.test(formData.name)) {
-      newErrors.name = 'Name should contain only alphabets';
+      newErrors.name = "Name should contain only alphabets";
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Invalid email format';
+      newErrors.email = "Invalid email format";
     }
 
     if (!formData.password) {
-      newErrors.password = 'Password is required';
+      newErrors.password = "Password is required";
     } else if (formData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters';
+      newErrors.password = "Password must be at least 6 characters";
     }
 
     if (!formData.role) {
-      newErrors.role = 'Role is required';
+      newErrors.role = "Role is required";
     }
 
     setErrors(newErrors);
@@ -42,7 +42,7 @@ const AddUserForm = ({ setUsers, searchQuery, setSearchQuery }) => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: '' });
+    setErrors({ ...errors, [e.target.name]: "" });
   };
 
   const handleSubmit = async (e) => {
@@ -51,10 +51,10 @@ const AddUserForm = ({ setUsers, searchQuery, setSearchQuery }) => {
     if (!validate()) return;
 
     try {
-      const res = await fetch('http://localhost:5000/users', {
-        method: 'POST',
+      const res = await fetch("http://localhost:5000/users", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
@@ -62,23 +62,26 @@ const AddUserForm = ({ setUsers, searchQuery, setSearchQuery }) => {
       if (res.ok) {
         const newUser = await res.json();
         setUsers((prev) => [...prev, newUser]);
-        setSuccess('User added successfully!');
-        setFormData({ name: '', email: '', password: '', role: '' });
+        setSuccess("User added successfully!");
+        setFormData({ name: "", email: "", password: "", role: "" });
         setErrors({});
       } else {
-        setSuccess('Failed to add user.');
+        setSuccess("Failed to add user.");
       }
     } catch (error) {
-      setSuccess('Something went wrong!');
+      setSuccess("Something went wrong!");
     }
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded shadow space-y-4 max-w-xl w-full mx-auto"
+      className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded shadow space-y-4 max-w-xl w-full mx-auto 
+             min-h-[400px] sm:min-h-[500px] md:min-h-[600px]"
     >
-      <h2 className="text-xl font-semibold text-black dark:text-white">Add User</h2>
+      <h2 className="text-xl font-semibold text-black dark:text-white">
+        Add User
+      </h2>
 
       {/* Search */}
       <div>
@@ -106,7 +109,9 @@ const AddUserForm = ({ setUsers, searchQuery, setSearchQuery }) => {
           onChange={handleChange}
           className="w-full px-3 py-2 border rounded dark:bg-gray-700 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+        {errors.name && (
+          <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+        )}
       </div>
 
       {/* Email */}
@@ -121,7 +126,9 @@ const AddUserForm = ({ setUsers, searchQuery, setSearchQuery }) => {
           onChange={handleChange}
           className="w-full px-3 py-2 border rounded dark:bg-gray-700 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+        {errors.email && (
+          <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+        )}
       </div>
 
       {/* Password */}
@@ -157,7 +164,9 @@ const AddUserForm = ({ setUsers, searchQuery, setSearchQuery }) => {
           <option value="Editor">Editor</option>
           <option value="Viewer">Viewer</option>
         </select>
-        {errors.role && <p className="text-red-500 text-sm mt-1">{errors.role}</p>}
+        {errors.role && (
+          <p className="text-red-500 text-sm mt-1">{errors.role}</p>
+        )}
       </div>
 
       {/* Submit Button */}
@@ -169,7 +178,9 @@ const AddUserForm = ({ setUsers, searchQuery, setSearchQuery }) => {
       </button>
 
       {/* Success Message */}
-      {success && <p className="text-green-600 dark:text-green-400 mt-2">{success}</p>}
+      {success && (
+        <p className="text-green-600 dark:text-green-400 mt-2">{success}</p>
+      )}
     </form>
   );
 };

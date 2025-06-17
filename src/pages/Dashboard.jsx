@@ -35,7 +35,7 @@ const Dashboard = () => {
                          <Analytics />
                          <Users users={filteredUsers} loading={loadingUsers} />
                     </div>
-                    <div className="lg:col-span-1 ">
+                    <div className="lg:col-span-1 h-full ">
                          <AddUserForm setUsers={setUsers} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
                     </div>
                </div>

@@ -12,16 +12,24 @@ import {
 const Analytics = () => {
   const [filter, setFilter] = useState('Weekly');
   const [analyticsData, setAnalyticsData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchAnalyticsData = async () => {
+      setLoading(true);
+
+      const delay = new Promise((res) => setTimeout(res, 600)); // delay for at least 2 sec
+
       try {
         const res = await fetch('https://dummyjson.com/users?limit=100');
         const data = await res.json();
         const grouped = groupData(data.users, filter);
+        await delay; // Ensure 2s delay even if fetch is quick
         setAnalyticsData(grouped);
       } catch (error) {
         console.error('Failed to fetch analytics data:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -108,34 +116,39 @@ const Analytics = () => {
         </div>
       </div>
 
-      {/* Line Chart */}
-      <div className="w-full h-[100px] sm:h-[200px]">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={analyticsData}>
-            {/* No CartesianGrid for clean background */}
-            <XAxis dataKey="name" stroke="#8884d8" />
-            <YAxis stroke="#8884d8" />
-            <Tooltip />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey="signups"
-              stroke="#6366f1"
-              name="Signups"
-              strokeWidth={3}
-              dot={{ r: 4 }}
-            />
-            <Line
-              type="monotone"
-              dataKey="revenue"
-              stroke="#10b981"
-              name="Revenue ($)"
-              strokeWidth={3}
-              dot={{ r: 4 }}
-            />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
+      {/* Loader */}
+      {loading ? (
+        <div className="w-full h-[100px] sm:h-[200px] flex items-center justify-center">
+          <div className="loader border-4 border-blue-500 border-t-transparent rounded-full w-10 h-10 animate-spin" />
+        </div>
+      ) : (
+        <div className="w-full h-[100px] sm:h-[200px]">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={analyticsData}>
+              <XAxis dataKey="name" stroke="#8884d8" />
+              <YAxis stroke="#8884d8" />
+              <Tooltip />
+              <Legend />
+              <Line
+                type="monotone"
+                dataKey="signups"
+                stroke="#6366f1"
+                name="Signups"
+                strokeWidth={3}
+                dot={{ r: 4 }}
+              />
+              <Line
+                type="monotone"
+                dataKey="revenue"
+                stroke="#10b981"
+                name="Revenue ($)"
+                strokeWidth={3}
+                dot={{ r: 4 }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      )}
     </div>
   );
 };

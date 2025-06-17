@@ -1,42 +1,37 @@
+
+
 {
   "users": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Alice",
       "email": "alice@example.com",
       "role": "Admin"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Bob",
       "email": "bob@example.com",
       "role": "Editor"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Charlie",
       "email": "charlie@example.com",
       "role": "Viewer"
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "Pooja Dayal",
       "email": "pd@gmail.com",
       "password": "pooja@123",
       "role": "Admin"
     },
     {
-      "id": "5",
-      "name": "Pooja Dayal",
-      "email": "pd@gmail.com",
-      "password": "Pooja123",
-      "role": "Admin"
-    },
-    {
-      "id": "9057",
-      "name": "Pooja",
-      "email": "w@gmail.com",
-      "password": "Pooja@123",
+      "id": 5,
+      "name": "Asha Dayal",
+      "email": "asha@gmail.com",
+      "password": "Asha@123",
       "role": "Editor"
     }
   ],
@@ -48,31 +43,5 @@
       "revenue": 5600,
       "id": "621c"
     }
-  ],
-  "analytics": {
-    "weekly": [
-      {
-        "name": "Mon",
-        "signups": 10,
-        "revenue": 200
-      },
-      {
-        "name": "Tue",
-        "signups": 20,
-        "revenue": 300
-      }
-    ],
-    "monthly": [
-      {
-        "name": "Week 1",
-        "signups": 60,
-        "revenue": 1200
-      },
-      {
-        "name": "Week 2",
-        "signups": 50,
-        "revenue": 1100
-      }
-    ]
-  }
+  ]
 }
