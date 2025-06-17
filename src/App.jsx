@@ -8,7 +8,7 @@ const App = () => {
     <ThemeProvider>
       <div className="min-h-screen text-white bg-gradient-to-r from-blue-800 to-blue-300 dark:from-gray-800 dark:to-gray-600">
         <Header />
-        <Cards/>
+        <Dashboard/>
       </div>
     </ThemeProvider>
   )

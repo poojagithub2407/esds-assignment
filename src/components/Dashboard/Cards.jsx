@@ -12,7 +12,7 @@ const Cards = () => {
 
       const res = await fetch('http://localhost:5000/card');
       const data = await res.json();
-
+    
       const formatted = [
         { title: 'Total Users', value: data[0]?.totalUsers },
         { title: 'Active Users', value: data[0]?.activeUsers },
