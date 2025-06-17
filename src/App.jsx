@@ -1,10 +1,15 @@
+// App.jsx
 import React from 'react'
+import Header from './components/Header'
+import { ThemeProvider } from './context/ThemeContext'
 
 const App = () => {
   return (
-    <div>
-      <h1>Hello</h1>
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen text-white bg-gradient-to-r from-blue-800 to-blue-300 dark:from-gray-800 dark:to-gray-600">
+        <Header />
+      </div>
+    </ThemeProvider>
   )
 }
 

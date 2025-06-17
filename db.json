@@ -1,0 +1,28 @@
+{
+  "users": [
+    { "id": 1, "name": "Alice", "email": "alice@example.com", "role": "Admin" },
+    { "id": 2, "name": "Bob", "email": "bob@example.com", "role": "Editor" },
+    {
+      "id": 3,
+      "name": "Charlie",
+      "email": "charlie@example.com",
+      "role": "Viewer"
+    }
+  ],
+  "stats": {
+    "totalUsers": 120,
+    "activeUsers": 80,
+    "newSignups": 10,
+    "revenue": 5600
+  },
+  "analytics": {
+    "weekly": [
+      { "name": "Mon", "signups": 10, "revenue": 200 },
+      { "name": "Tue", "signups": 20, "revenue": 300 }
+    ],
+    "monthly": [
+      { "name": "Week 1", "signups": 60, "revenue": 1200 },
+      { "name": "Week 2", "signups": 50, "revenue": 1100 }
+    ]
+  }
+}
